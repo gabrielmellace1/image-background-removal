@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Background Removal</title>
+</head>
+<body>
+
+<h2>Upload Image for Background Removal</h2>
+<form enctype="multipart/form-data" action="/images/upload" method="post" id="uploadForm">
+    <input type="file" name="image" accept="image/*" required>
+    <input type="submit" value="Upload and Process">
+</form>
+
+<h2>Processed Image</h2>
+<img id="resultImage" alt="Processed Image will appear here" style="max-width: 100%;">
+
+<script>
+    document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+
+        try {
+            const response = await fetch('/images/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                alert('Failed to process the image.');
+                return;
+            }
+
+            const data = await response.json();
+            document.getElementById('resultImage').src = data.imageUrl;
+        } catch (err) {
+            console.error('Error:', err);
+            alert('There was an error processing the request.');
+        }
+    });
+</script>
+
+</body>
+</html>
