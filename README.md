@@ -1,4 +1,4 @@
-# Image Background Removal Service
+# Image Background removal Service
 
 This service provides a simple way to upload images and have their backgrounds removed using a combination of Node.js for the server backend and a Python script for image processing.
 
@@ -6,7 +6,7 @@ This service provides a simple way to upload images and have their backgrounds r
 
 This application allows users to:
 
-Upload images via a web interface.
+Upload images via a web interface or API.
 Process these images to remove their backgrounds using a Python script.
 View the processed images.
 Delete any processed image from the server.
@@ -22,7 +22,7 @@ rembg Python package
 
 **Clone the repository:**
 ```bash
-git clone <repository_url>
+git clone https://github.com/gabrielmellace1/image-background-removal
 cd image-background-removal
 ```
 
